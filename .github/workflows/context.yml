@@ -1,0 +1,24 @@
+name: Contexts
+run-name: Contextos de Github 
+on:
+  push:
+    branches:
+      - main
+jobs:
+  Explore-Contexts:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run context github
+        env: 
+          GITHUB: ${{ toJson(github) }}
+        run: echo $GITHUB
+      - name: Run context runner 
+        env: 
+          RUNNER: ${{ toJson(runner) }}
+        run: echo $RUNNER
+      - name: Run context SHA 
+        env: 
+          SHA: ${{ toJson(github.sha) }}
+        run: echo $SHA
+  
