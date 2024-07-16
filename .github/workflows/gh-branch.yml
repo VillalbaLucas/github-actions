@@ -1,0 +1,13 @@
+name: GH Branch
+
+on:
+  push:
+    branches:
+      - gh-actions
+
+jobs:
+  show-date:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Show Date
+        run: date
