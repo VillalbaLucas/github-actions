@@ -9,10 +9,10 @@ jobs:
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Run context github
+      - name: Run context ENV
         env: 
-          GITHUB: ${{ toJson(github) }}
-        run: echo $GITHUB
+          ENV: ${{ toJson(github.env) }}
+        run: echo $ENV
       - name: Run context runner 
         env: 
           RUNNER: ${{ toJson(runner) }}
