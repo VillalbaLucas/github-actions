@@ -2,8 +2,8 @@ name: Contexts
 run-name: Contextos de Github 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+
 jobs:
   Explore-Contexts:
     if: ${{ github.ref == 'refs/heads/main' }}
@@ -21,4 +21,23 @@ jobs:
         env: 
           SHA: ${{ toJson(github.sha) }}
         run: echo $SHA
+
+  Explore-Concurrency-First: 
+    concurrency:
+      group: ${{github.workflow}}-${{github.ref}}
+      cancel-in-progress: true
+    runs-on: ubuntu-latest
+    steps:
+     - name: Run Concurrency First
+       run: echo First Concurrency Job
+
+  Explore-Concurrency-Second:
+    concurrency:
+      group: ${{github.workflow}}-${{github.ref}}
+      cancel-in-progress: true 
+    runs-on: ubuntu-latest
+    steps:
+     - name: Run Concurrency Second
+       run: echo Second Concurrency Job
+
   
