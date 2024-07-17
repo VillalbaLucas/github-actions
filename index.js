@@ -1,20 +1,11 @@
 import express from 'express';
-import {v1 as uuidv1} from 'uuid'
+import { indexRouter } from './routes/index.js';
 
 
 const PORT = 3000;
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('GitHub Actions!')
-})
-
-app.get('/actions', (req, res) => {
-    res.json({
-        'id': uuidv1(),
-        'actions': 'UUID'
-    })
-})
+app.use('/', indexRouter);
 
 app.listen(PORT, (req, res) => {
     console.log(`Listen in port localhost:${PORT}`);

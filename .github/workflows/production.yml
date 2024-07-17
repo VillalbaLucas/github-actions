@@ -1,0 +1,23 @@
+name: Production App
+on:
+  push:
+    branches: [production]
+jobs:
+  Build-App:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup app
+        uses: actions/setup-node@v2
+        with:
+          cache: npm
+          node-version: 1.0.0
+      - name: Install Dependencies
+        run: npm intall
+      - name: Build app
+        run: npm run build
+
+
+
+
+    
