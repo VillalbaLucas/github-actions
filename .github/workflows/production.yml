@@ -11,7 +11,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           cache: npm
-          node-version: 1.0.0
+          node-version: 18.17.0
       - name: Install Dependencies
         run: npm intall
       - name: Build app
